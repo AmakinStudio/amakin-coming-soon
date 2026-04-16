@@ -32,9 +32,9 @@ html, body {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.45) 50%,
-    rgba(0, 0, 0, 0.65) 100%
+    rgba(0, 0, 0, 0.25) 0%,  /* ← calibrate: 0.0=invisible 1.0=black */
+    rgba(0, 0, 0, 0.15) 50%, /* ← middle */
+    rgba(0, 0, 0, 0.35) 100% /* ← bottom */
   );
 }
 
@@ -51,22 +51,27 @@ html, body {
 }
 
 .logo {
-  width: 160px;
-  height: 160px;
+  width: 200px;
+  height: 200px;
   margin-bottom: 2rem;
   filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.5));
 }
 
 /* Glass effect */
+/* ── Calibration guide ───────────────────────────────────────────────────
+   background alpha  → how opaque the glass tint is  (0.0–0.3 for light glass)
+   blur(Xpx)         → blur strength  (8px subtle · 16px strong · 24px heavy)
+   border alpha      → edge brightness  (0.2–0.4 makes it crisper)
+   ────────────────────────────────────────────────────────────────────── */
 .glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.10); /* ← glass tint opacity */
+  backdrop-filter: blur(14px);            /* ← blur radius */
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.30); /* ← edge brightness */
   border-radius: 16px;
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .title {
